@@ -7,7 +7,7 @@ Table of Contents
 2. Creating entity Model and CRUD pages
 3. Styling CRUD Pages
 <h1>Designing the About page</h1>
-For this story, I was assigned the task of designing the About page for the Vertigo Theatre web application. I utilized Bootstrap cards to display the pictures and names of the Ensemble for a clean look. I also utilized varying Bootstrap column sizes to ensure proper format for different screen sizes. 
+For this story, I was assigned the task of designing the About page for the Vertigo Theatre web application. I utilized Bootstrap cards to display the pictures and names of the Ensemble for a clean look. I also utilized varying Bootstrap column sizes to ensure proper format for different screen sizes. During this project it was imperitive to adhere to the defined naming convention for custom CSS classes and to also not override any Bootstrap classes.
 
 
 
@@ -77,6 +77,58 @@ For this story, I was assigned the task of designing the About page for the Vert
 </div>
 ```
 
+
+
+
+```CSS
+/*Adding CSS for Theatre Vertigo About page*/
+.aboutPage-Card-Img {
+    width: auto;
+    max-width: 100%;
+    height: 75%;
+    object-fit: cover;
+}
+.aboutPage-Card-Img:hover {
+    background-color: var(--dark-color);
+    opacity: .8;
+    transition: .15s;
+}
+.aboutPage-Card:hover {
+    border-color: var(--secondary-color);
+    border-style: double;
+}
+.aboutPage-Card-Bdy {
+    background-color: var(--dark-color);
+}
+.aboutPage-Card-Text {
+    text-align: center;
+    color: var(--light-color);
+}
+.aboutPage-History {
+    text-align: left;
+    color: var(--light-color);
+    padding: 40px;
+}
+.aboutPage-Board {
+    text-align:center;
+    color: var(--light-color);
+    padding: 40px;
+}
+.aboutPage-Mission {
+    text-align: center;
+    color: var(--light-color);
+    padding: 40px;
+
+}
+.aboutPage-h1 {
+    color: var(--main-bg-color);
+    text-align: center;
+    padding: 15px;
+    text-decoration: underline;
+    font-weight: bold;
+    text-decoration-color: var(--secondary-color);
+}
+```
 
 
 
