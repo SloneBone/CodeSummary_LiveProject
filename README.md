@@ -2,10 +2,10 @@
 Tech Academy C# Live Project Code Summary
 <h1>Introduction</h1>
 For the final two weeks of my time at the Tech Academy, I worked on a team with my fellow students to help develop a new content management system(CMS) for a local theatre/acting company's website. This project was built with ASP .NET MVC and Entity Framework using C#. This interactive MVC web application allows the managing of content for users who are not techincally savy and want to easily manage what displays on their website. For this project we utilized an Agile work environment in Azure DevOps and SCRUM processes, which  involved daily standups and weekly code retrospectives during the two week sprint. 
-Table of Contents
-1. Designing the About page
-2. Creating entity Model and CRUD pages
-3. Styling CRUD Pages
+<h3>Table of Contents</h3>
+* Designing the About page
+* Creating entity Model and CRUD pages
+* Styling CRUD Pages
 <h1>Designing the About page</h1>
 For this story, I was assigned the task of designing the About page for the Vertigo Theatre web application. I utilized Bootstrap cards to display the pictures and names of the Ensemble for a clean look. I also utilized varying Bootstrap column sizes to ensure proper format for different screen sizes. During this project it was imperitive to adhere to the defined naming convention for custom CSS classes and to also not override any Bootstrap classes.
 
@@ -140,6 +140,158 @@ For this story, I was assigned the task of designing the About page for the Vert
 
 
 
+
+```C#
+namespace TheatreCMS3.Areas.Production.Models
+{
+    public enum PositionEnum
+    {
+        Actor,
+        Director,
+        StageManager,
+        Technician,
+        Other        
+    }
+    public class CastMember
+    {
+        [Key]
+        public int CastMemberId { get; set; }
+        public string Name { get; set; }
+        public int? YearJoined { get; set; }
+        public PositionEnum MainRole { get; set; }
+        public string Bio { get; set; }
+        //public byte[] Photo { get; set; }
+        public bool CurrentMember { get; set; }
+        public string Character { get; set; }
+        public int? CastYearLeft { get; set; }
+        public int? DebutYear { get; set; }
+    }
+}
+```
+Scaffolding the CRUD pages via Controller
+
+
+
+
+```C#
+namespace TheatreCMS3.Areas.Production.Controllers
+{
+    public class CastMembersController : Controller
+    {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        // GET: Production/CastMembers
+        public ActionResult Index()
+        {
+            return View(db.CastMembers.ToList());
+        }
+
+        // GET: Production/CastMembers/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CastMember castMember = db.CastMembers.Find(id);
+            if (castMember == null)
+            {
+                return HttpNotFound();
+            }
+            return View(castMember);
+        }
+
+        // GET: Production/CastMembers/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Production/CastMembers/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "CastMemberId,Name,YearJoined,MainRole,Bio,CurrentMember,Character,CastYearLeft,DebutYear")] CastMember castMember)
+        {
+            if (ModelState.IsValid)
+            {
+                db.CastMembers.Add(castMember);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(castMember);
+        }
+
+        // GET: Production/CastMembers/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CastMember castMember = db.CastMembers.Find(id);
+            if (castMember == null)
+            {
+                return HttpNotFound();
+            }
+            return View(castMember);
+        }
+
+        // POST: Production/CastMembers/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "CastMemberId,Name,YearJoined,MainRole,Bio,CurrentMember,Character,CastYearLeft,DebutYear")] CastMember castMember)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(castMember).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(castMember);
+        }
+
+        // GET: Production/CastMembers/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CastMember castMember = db.CastMembers.Find(id);
+            if (castMember == null)
+            {
+                return HttpNotFound();
+            }
+            return View(castMember);
+        }
+
+        // POST: Production/CastMembers/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            CastMember castMember = db.CastMembers.Find(id);
+            db.CastMembers.Remove(castMember);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}
+```
 
 
 <h1>Styling Crud Pages</h1>
