@@ -79,6 +79,24 @@ For this story, I was assigned the task of designing the About page for the Vert
 
 
 
+<h3>Defined Color Theme For Project</h3>
+
+
+
+```CSS
+ CSS color variables 
+:root { /* Color palette for css 
+    --main-bg-color: #DB1A11;  Red 
+    --main-secondary-color: #F04D44;  Red, a shade lighter 
+    --secondary-color: #D6972A;  Yellow gold 
+    --light-color: #FFFBFB;  White 
+    --dark-color: #000000;  Black 
+    --subscriber-main: #9D7C39;  Dark Gold 
+}*/
+```
+
+
+
 
 ```CSS
 /*Adding CSS for Theatre Vertigo About page*/
@@ -297,6 +315,196 @@ namespace TheatreCMS3.Areas.Production.Controllers
 <h1>Styling Crud Pages</h1>
 
 
+
+
+```C#
+@model TheatreCMS3.Areas.Production.Models.CastMember
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h1 class="cast_member-create--h1">Create Cast Member</h1>
+
+<div class="cast_member-create--form_container col-12 col-sm-12 col-md-8 col-lg-6">
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal cast_member-create--form">
+        <h4 class="cast_member-create--h4">Add New Cast Member</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control cast_member-create--form_group", placeholder= "Enter Full Name" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.YearJoined, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.YearJoined, new { htmlAttributes = new { @class = "form-control cast_member-create--form_group", placeholder="Enter Year Joined" } })
+                @Html.ValidationMessageFor(model => model.YearJoined, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MainRole, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-12">
+                @Html.EnumDropDownListFor(model => model.MainRole, htmlAttributes: new { @class = "form-control cast_member-create--form_group" })
+                @Html.ValidationMessageFor(model => model.MainRole, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.Bio, new { @class = "form-control cast_member-create--bio_form_group", placeholder = "Enter short bio" })
+                @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group cast_member-create--current_member">
+            @Html.LabelFor(model => model.CurrentMember, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-12">
+                <div class="check-box">
+                    @Html.EditorFor(model => model.CurrentMember)
+                    @Html.ValidationMessageFor(model => model.CurrentMember, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Character, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Character, new { htmlAttributes = new { @class = "form-control cast_member-create--form_group", placeholder = "Enter Character Name" } })
+                @Html.ValidationMessageFor(model => model.Character, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CastYearLeft, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.CastYearLeft, new { htmlAttributes = new { @class = "form-control cast_member-create--form_group", placeholder = "Enter Year Left" } })
+                @Html.ValidationMessageFor(model => model.CastYearLeft, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DebutYear, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.DebutYear, new { htmlAttributes = new { @class = "form-control cast_member-create--form_group", placeholder = "Enter Debut Year" } })
+                @Html.ValidationMessageFor(model => model.DebutYear, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row justify-content-around">
+          <div class="form-group cast_member-create--submit_btn">
+              <input type="submit" value="Create" class="btn btn-default" />
+          </div>
+              @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default cast_member-create--back_btn " })
+        </div>
+    </div>
+    
+}
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+```
+
+
+
+```C#
+.cast_member-create--h1 {
+    text-align: center;
+    color: var(--light-color);
+    padding: 30px;
+}
+.cast_member-create--h4 {
+    text-align: center;
+    color: var(--dark-color);
+    padding: 30px;
+}
+
+.cast_member-create--form_container {
+    text-align: center;
+    border: solid 20px;
+    border-radius: 25px;
+    border-color: var(--main-bg-color);
+    background-color: var(--light-color);
+    margin-left: auto;
+    margin-right: auto;
+}
+.cast_member-create--form {
+    text-align: left;
+}
+.cast_member-create--current_member {
+    text-align: center;
+    padding: 20px;
+}
+.cast_member-create--submit_btn {
+    text-align: center;
+    background-color: var(--main-bg-color);
+    border-radius: 10px;
+    width: auto;
+    margin-top: 50px;
+    padding: 10px;
+    
+}
+.cast_member-create--submit_btn:hover {
+    opacity: .8;
+}
+.check-box {
+    text-align: center;
+}
+.cast_member-create--back_btn {
+    margin-top: 50px;
+    text-align: center;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 10px;
+    width: auto;
+    margin-bottom: 15px;
+}
+.cast_member-create--back_btn:hover {
+    opacity: .8;
+}
+.cast_member-create--form_group {
+    background-color: lightgrey;
+    border: 2px solid var(--dark-color);
+    outline: none;
+    width: 100%;
+    text-align: left;
+    margin: auto;
+    margin: auto;
+}
+.cast_member-create--bio_form_group, textarea {
+    background-color: lightgrey;
+    border: 2px solid var(--dark-color);
+    outline: none;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cast_member-create--form_group:focus, textarea:focus {
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 0 3px var(--secondary-color);
+    color: var(--main-secondary-color);
+    background-color: rgba(204, 238, 255, .9);
+}
+.cast_member-create--bio_form_group:focus, textarea:focus {
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 0 3px var(--secondary-color);
+    color: var(--main-secondary-color);
+    background-color: rgba(204, 238, 255, .9);
+}
+```
 
 
 
