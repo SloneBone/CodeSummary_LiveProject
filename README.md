@@ -9,13 +9,10 @@ Table of Contents
 <h1>Designing the About page</h1>
 For this story, I was assigned the task of designing the About page for the Vertigo Theatre web application. I utilized Bootstrap cards to display the pictures and names of the Ensemble for a clean look. I also utilized varying Bootstrap column sizes to ensure proper format for different screen sizes. 
 
-'''C#
-@{
-  ViewBag.Title = "About";
-}
-@*<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>*@
 
+
+
+```C#
 <div class="aboutPage-Mission">
   <h1 class="aboutPage-h1">Mission Statement</h1>
   <p>We seek to engage audiences through compelling, ensemble-driven productions<br /> with a focus on developing new works.</p>
@@ -78,7 +75,7 @@ For this story, I was assigned the task of designing the About page for the Vert
     In 2016, Theatre Vertigo produced its first officially commissioned work from a playwright, I Want To Destroy You, by Rob Handel.
   </p>
 </div>
-'''
+```
 
 
 
