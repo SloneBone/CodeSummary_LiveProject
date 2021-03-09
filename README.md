@@ -3,9 +3,9 @@ Tech Academy C# Live Project Code Summary
 <h1>Introduction</h1>
 For the final two weeks of my time at the Tech Academy, I worked on a team with my fellow students to help develop a new content management system(CMS) for a local theatre/acting company's website. This project was built with ASP .NET MVC and Entity Framework using C#. This interactive MVC web application allows the managing of content for users who are not techincally savy and want to easily manage what displays on their website. For this project we utilized an Agile work environment in Azure DevOps and SCRUM processes, which  involved daily standups and weekly code retrospectives during the two week sprint. 
 <h3>Table of Contents</h3>
-* Designing the About page
-* Creating entity Model and CRUD pages
-* Styling CRUD Pages
+* Designing the About page<br>
+* Creating entity Model and CRUD pages<br>
+* Styling CRUD Pages<br>
 <h1>Designing the About page</h1>
 For this story, I was assigned the task of designing the About page for the Vertigo Theatre web application. I utilized Bootstrap cards to display the pictures and names of the Ensemble for a clean look. I also utilized varying Bootstrap column sizes to ensure proper format for different screen sizes. During this project it was imperitive to adhere to the defined naming convention for custom CSS classes and to also not override any Bootstrap classes.
 
