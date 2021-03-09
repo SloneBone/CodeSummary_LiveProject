@@ -6,6 +6,7 @@ For the final two weeks of my time at the Tech Academy, I worked on a team with 
 * Designing the About page<br>
 * Creating entity Model and CRUD pages<br>
 * Styling CRUD Pages<br>
+* Conclusion<br>
 <h1>Designing the About page</h1>
 For this story, I was assigned the task of designing the About page for the Vertigo Theatre web application. I utilized Bootstrap cards to display the pictures and names of the Ensemble for a clean look. I also utilized varying Bootstrap column sizes to ensure proper format for different screen sizes. During this project it was imperitive to adhere to the defined naming convention for custom CSS classes and to also not override any Bootstrap classes.
 
@@ -155,6 +156,7 @@ For this story, I was assigned the task of designing the About page for the Vert
 
 
 <h1>Creating entity Model and CRUD pages</h1>
+For the next story I was assigned the task of creating an entity model of a Cast Member with defined properties and value types. I used a code first approach-- creating my model in code before actually creating the model. I was also tasked with implementing a Position enum for the Main Role property. I also commented out the Photo property with Byte[] array value type before building model and updating database as it was going to be used in a later story. 
 
 
 
@@ -187,6 +189,7 @@ namespace TheatreCMS3.Areas.Production.Models
 }
 ```
 Scaffolding the CRUD pages via Controller
+Here I used the power of Entity Framework to scaffold my Cast Member controller and create CRUD functionality.
 
 
 
@@ -313,7 +316,7 @@ namespace TheatreCMS3.Areas.Production.Controllers
 
 
 <h1>Styling Crud Pages</h1>
-
+I was assigned the task of styling the recently created CRUD pages for the Cast Member model. 
 
 
 
@@ -507,4 +510,5 @@ namespace TheatreCMS3.Areas.Production.Controllers
 ```
 
 
-
+<h1>Conclusion</h1>
+This live project was an invaluable opportunity to really test myself and get a glimpse of waht an Agile work environment looks like.
