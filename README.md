@@ -511,4 +511,4 @@ I was assigned the task of styling the recently created CRUD pages for the Cast 
 
 
 <h1>Conclusion</h1>
-This live project was an invaluable opportunity to really test myself and get a glimpse of waht an Agile work environment looks like.
+This live project was an invaluable opportunity to really test myself and get a glimpse of what an Agile work environment looks like. I gained experience with ASP .NET MVC, creating a code first model web application and subsequent views with CRUD functionality via the controller. I learned more about utilizing bootstrap in my project to ensure proper resposiveness to different screen sizes(ie mobile vs laptop). I also learned the importance of naming conventions when working on a large group project. Working with a group of developers over the  course of project and being able to have daily standups in which we discussed the previous days work, roadblocks/breakthroughs, current workflow and general questions was a great way to communicate and learn from my fellow students. Overall, I really relished the real world experience that this Live Project provided me and look forward to applying what I have learned in the future. 
